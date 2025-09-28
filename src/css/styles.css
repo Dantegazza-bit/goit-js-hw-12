@@ -7,12 +7,407 @@
 /* Common styles */
 @import url('./reset.css');
 @import url('./base.css');
-@import url('./container.css');
-@import url('./animations.css');
 
-/* Sections style */
-@import url('./header.css');
-@import url('./vite-promo.css');
-@import url('./badges.css');
-@import url('./back-link.css');
-@import url('./footer.css');
+:root {
+  --gap: 24px;
+  --card-radius: 12px;
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: #111;
+  background: #f7f7fa;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 24px;
+  margin: 0 auto;
+}
+
+.page-title {
+  margin: 0 0 12px;
+  font-size: 28px;
+}
+
+.form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.form input {
+  width: 320px;
+  padding: 10px 12px;
+  border: 1px solid #ccd;
+  border-radius: 10px;
+  outline: none;
+}
+
+.form button {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  background: #4f46e5;
+  color: #fff;
+  cursor: pointer;
+}
+
+.gallery {
+  list-style: none;
+  padding: 0;
+  margin: var(--gap) 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--gap);
+}
+
+.card {
+  background: #fff;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.card a {
+  display: block;
+  line-height: 0;
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  padding: 10px 12px;
+  font-size: 12px;
+  color: #444;
+}
+
+.meta b {
+  display: block;
+  color: #111;
+  font-size: 14px;
+}
+
+/* ======= CSS Loader (проста анімація) ======= */
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #e0e3ff;
+  border-top-color: #4f46e5;
+  border-radius: 50%;
+  margin: 10px 0;
+}
+.hidden {
+  display: none;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Галерея */
+.gallery {
+  list-style: none;
+  padding: 0;
+  margin: 32px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+}
+
+/* Картка */
+.gallery-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.gallery-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.gallery-image {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.gallery-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  font-size: 14px;
+}
+
+.gallery-info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Loader */
+.loader {
+  display: none;
+  text-align: center;
+  margin-top: 40px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+}
+
+.loader.active {
+  display: block;
+}
+
+/* Контейнер сторінки */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+/* Центрований пошук у один рядок */
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto 24px;
+}
+
+.form input[type='text'] {
+  flex: 1;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+}
+
+.form button {
+  height: 40px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 8px;
+  background: #5869ff;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Прибрати заголовок, якщо він лишився в DOM */
+.page-title {
+  display: none;
+}
+
+/* Лоадер по центру і в один рядок */
+.loader {
+  text-align: center;
+  margin: 8px 0 24px;
+  color: #555;
+  font-size: 16px;
+}
+.loader span {
+  white-space: nowrap; /* ключ, щоб не переносилось */
+}
+.hidden {
+  display: none;
+}
+
+/* Сітка галереї (щоб нічого не наїжджало) */
+.gallery {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.gallery-item {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+
+.gallery-link {
+  display: block;
+  text-decoration: none;
+}
+
+.gallery-image {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+/* Панель з метриками під фото */
+.meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px 12px;
+  padding: 10px 14px 12px;
+  font-size: 14px;
+}
+.meta b {
+  display: block;
+}
+
+/* Центруємо форму зверху */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+.form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Лоадер під полем пошуку */
+#page-loader {
+  display: none;
+  margin-top: 80px; /* тут регулюєш відстань */
+  text-align: center;
+  font-size: 16px;
+  color: #374151;
+  white-space: nowrap;
+}
+
+/* Коли активний */
+#page-loader.active {
+  display: block;
+}
+
+/* Текст */
+.page-loader__text {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* ---------- GALLERY SPACING ---------- */
+.gallery {
+  margin-bottom: 16px; /* відступ знизу під кнопку/лоадер */
+}
+
+/* ---------- LOAD MORE BUTTON ---------- */
+/* підтримаємо і .load-more, і #load-more — що б у тебе не стояло в HTML */
+.load-more,
+#load-more {
+  display: inline-block;
+  margin: 8px auto 24px; /* по центру, як на макеті */
+  padding: 10px 18px;
+  min-width: 120px;
+  border: none;
+  border-radius: 8px;
+  background: #5869ff; /* той же відтінок, що й кнопка Search */
+  color: #fff;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* ховер/фокус */
+.load-more:hover,
+#load-more:hover,
+.load-more:focus-visible,
+#load-more:focus-visible {
+  background: #4f57ff;
+  outline: none;
+}
+
+/* disabled стан, коли сторінок більше немає або під час завантаження */
+.load-more:disabled,
+#load-more:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* щоб точно центрувалась у потоці */
+.load-more,
+#load-more {
+  display: block;
+  text-align: center;
+}
+
+/* ---------- PAGE LOADER (текст) під галереєю ---------- */
+/* Лоадер має бути ЕЛЕМЕНТОМ ПІСЛЯ .gallery в HTML (нижче) */
+#page-loader {
+  display: none; /* приховано за замовчуванням */
+  text-align: center; /* текст по центру */
+  margin: 16px 0 32px; /* відступи як на макеті */
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap; /* не переносити рядок */
+}
+
+#page-loader.active {
+  display: block; /* показати, коли завантажуємо */
+}
+
+/* маленька анімація "миготіння" (необов'язково) */
+@keyframes fadePulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+#page-loader.active {
+  animation: fadePulse 1.6s ease-in-out infinite;
+}
+
+/* ---------- Невеличкий респонс ---------- */
+@media (max-width: 480px) {
+  .gallery-image {
+    height: 200px;
+  }
+  .meta {
+    font-size: 13px;
+  }
+  .load-more,
+  #load-more {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+/* hidden має бути сильнішим за #id */
+.hidden {
+  display: none !important;
+}
+#load-more.hidden {
+  display: none !important;
+} /* на випадок специфічності */
